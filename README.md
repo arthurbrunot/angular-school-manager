@@ -2,6 +2,12 @@
 
 This is a school manager application built with Angular 15. It includes features such as a dashboard, students management, courses management, professors management, and planning.
 
+Live version of this project is available at this url: https://angular-school-manager-otb2ww5ye-arthurbrunot.vercel.app/
+
+You can use demo account for testing purpose
+- username: kedayat973@ippals.com
+- password: demo-password
+
 ## Student informations
 
 - Name: Arthur BRUNOT
