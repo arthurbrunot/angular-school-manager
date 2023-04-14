@@ -8,16 +8,16 @@ import { ToastrService } from "ngx-toastr"
   templateUrl: "./student-list.component.html",
 })
 export class StudentListComponent implements OnInit {
+  constructor(
+    public crudApi: StudentService,
+    public toastr: ToastrService,
+  ) { }
+
   p: number = 1
   Student: Student[]
   hideWhenNoStudent: boolean = false
   noData: boolean = false
   preLoader: boolean = true
-
-  constructor(
-    public crudApi: StudentService,
-    public toastr: ToastrService,
-  ) { }
 
   ngOnInit() {
     this.dataState()

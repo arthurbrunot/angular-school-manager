@@ -8,16 +8,16 @@ import { ToastrService } from "ngx-toastr"
   templateUrl: "./professor-list.component.html",
 })
 export class ProfessorListComponent implements OnInit {
+  constructor(
+    public crudApi: ProfessorService,
+    public toastr: ToastrService,
+  ) { }
+
   p: number = 1
   Professor: Student[]
   hideWhenNoProfessor: boolean = false
   noData: boolean = false
   preLoader: boolean = true
-
-  constructor(
-    public crudApi: ProfessorService,
-    public toastr: ToastrService,
-  ) { }
 
   ngOnInit() {
     this.dataState()
@@ -47,9 +47,9 @@ export class ProfessorListComponent implements OnInit {
     })
   }
   deleteProfessor(professor: Student) {
-    if (window.confirm("Are sure you want to delete this professor ?")) {
+    if (window.confirm("Etes-vous sûr de vouloir supprimer cet étudiant?")) {
       this.crudApi.DeleteProfessor(professor.$key)
-      this.toastr.success(professor.firstName + " successfully deleted!")
+      this.toastr.success(professor.firstName + " supprimé avec succès!")
     }
   }
 }

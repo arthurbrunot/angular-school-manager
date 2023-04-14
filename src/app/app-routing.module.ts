@@ -16,26 +16,27 @@ import { AddCourseComponent } from "./pages/courses/add-course/add-course.compon
 import { EditCourseComponent } from "./pages/courses/edit-course/edit-course.component"
 import { PlanningComponent } from "./pages/planning/planning.component"
 import { CourseListComponent } from "./pages/courses/courses-list/course-list.component"
+
 const routes: Routes = [
-  { path: "", redirectTo: "/sign-in", pathMatch: "full" },
-  { path: "sign-in", component: SignInComponent },
-  { path: "register-user", component: SignUpComponent },
-  { path: "forgot-password", component: ForgotPasswordComponent },
-  { path: "verify-email-address", component: VerifyEmailComponent },
-  { path: "register-student", component: AddStudentComponent, canActivate: [ AuthGuard ]  },
-  { path: "view-students", component: StudentListComponent, canActivate: [ AuthGuard ]  },
-  { path: "edit-student/:id", component: EditStudentComponent, canActivate: [ AuthGuard ]  },
-  { path: "profil", component: ProfilComponent, canActivate: [ AuthGuard ]  },
-  { path: "add-professor", component: AddProfessorComponent, canActivate: [ AuthGuard ]  },
-  { path: "view-professors", component: ProfessorListComponent, canActivate: [ AuthGuard ]  },
-  { path: "edit-professor/:id", component: EditProfessorComponent, canActivate: [ AuthGuard ]  },
-  { path: "add-course", component: AddCourseComponent, canActivate: [ AuthGuard ]  },
-  { path: "view-courses", component: CourseListComponent, canActivate: [ AuthGuard ]  },
-  { path: "edit-course/:id", component: EditCourseComponent, canActivate: [ AuthGuard ]  },
-  { path: "planning", component: PlanningComponent, canActivate: [ AuthGuard ]  },
+  { path: "", pathMatch: "full", redirectTo: "/sign-in" },
+  { component: SignInComponent, path: "sign-in" },
+  { component: SignUpComponent, path: "register-user" },
+  { component: ForgotPasswordComponent, path: "forgot-password" },
+  { component: VerifyEmailComponent, path: "verify-email-address" },
+  { canActivate: [ AuthGuard ], component: AddStudentComponent, path: "register-student"  },
+  { canActivate: [ AuthGuard ], component: StudentListComponent, path: "view-students"  },
+  { canActivate: [ AuthGuard ], component: EditStudentComponent, path: "edit-student/:id"  },
+  { canActivate: [ AuthGuard ], component: ProfilComponent, path: "profil"  },
+  { canActivate: [ AuthGuard ], component: AddProfessorComponent, path: "add-professor"  },
+  { canActivate: [ AuthGuard ], component: ProfessorListComponent, path: "view-professors"  },
+  { canActivate: [ AuthGuard ], component: EditProfessorComponent, path: "edit-professor/:id"  },
+  { canActivate: [ AuthGuard ], component: AddCourseComponent, path: "add-course"  },
+  { canActivate: [ AuthGuard ], component: CourseListComponent, path: "view-courses"  },
+  { canActivate: [ AuthGuard ], component: EditCourseComponent, path: "edit-course/:id"  },
+  { canActivate: [ AuthGuard ], component: PlanningComponent, path: "planning"  },
 ]
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
+  imports: [ RouterModule.forRoot(routes) ],
 })
 export class AppRoutingModule { }

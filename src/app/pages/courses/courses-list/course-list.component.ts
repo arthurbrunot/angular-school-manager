@@ -9,17 +9,17 @@ import { ProfessorService } from "../../../shared/services/crud/professor.servic
   templateUrl: "./course-list.component.html",
 })
 export class CourseListComponent implements OnInit {
-  p: number = 1
-  Course: Course[]
-  hideWhenNoCourse: boolean = false
-  noData: boolean = false
-  preLoader: boolean = true
-
   constructor(
     public courseApi: CourseService,
     public professorApi: ProfessorService,
     public toastr: ToastrService,
   ) { }
+
+  p: number = 1
+  Course: Course[]
+  hideWhenNoCourse: boolean = false
+  noData: boolean = false
+  preLoader: boolean = true
 
   ngOnInit() {
     this.dataState()
@@ -54,7 +54,7 @@ export class CourseListComponent implements OnInit {
     })
   }
   deleteCourse(course: Course) {
-    if (window.confirm("Are sure you want to delete this course ?")) {
+    if (window.confirm("Etes-vous sûr de vouloir supprimer ce cours?")) {
       this.courseApi.DeleteCourse(course.$key)
       this.toastr.success(course.name + " successfully deleted!")
     }

@@ -1,7 +1,7 @@
 <app-main-layout>
   <div class="pb-2 mb-3 border-b flex justify-between">
     <h2 class="text-3xl font-bold">Ajouter une matière</h2>
-    <button class="form-button" (click)="goBack()">
+    <button class="form-button" (click)="location.goBack()">
       Retour
     </button>
   </div>
@@ -15,6 +15,7 @@
               type="text"
               formControlName="name"
               class="form-input"
+              id="name"
               required
             />
             <!-- errors-->
@@ -31,6 +32,7 @@
               formControlName="professor"
               class="form-input"
               required
+              id="lastName"
             >
               <option value="" disabled selected>Choisir un professeur</option>
               <option *ngFor="let professor of Professors" [value]="professor.$key">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core"
+import { Component } from "@angular/core"
 import { AuthService } from "../../shared/services/auth/auth.service"
 import { faCalendarDays, faNewspaper, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons"
 
@@ -6,12 +6,8 @@ import { faCalendarDays, faNewspaper, faUserTie, faUsers } from "@fortawesome/fr
   selector: "app-main-layout",
   templateUrl: "./main-layout.component.html",
 })
-export class MainLayoutComponent implements OnInit {
+export class MainLayoutComponent {
   constructor(public authService: AuthService) {}
-
-  ngOnInit(): void {
-    console.log(this.authService)
-  }
 
   protected readonly faUsers = faUsers
   protected readonly faUserTie = faUserTie

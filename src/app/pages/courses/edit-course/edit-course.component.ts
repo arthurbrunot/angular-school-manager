@@ -2,27 +2,29 @@ import { Component, OnInit } from "@angular/core"
 import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { CourseService } from "../../../shared/services/crud/course.service"
 import { ActivatedRoute, Router } from "@angular/router"
-import { Location } from "@angular/common"
 import { ToastrService } from "ngx-toastr"
 import { Professor } from "../../../shared/services/crud/types"
 import { ProfessorService } from "../../../shared/services/crud/professor.service"
+import { LocationService } from "../../../shared/services/navigation/location.service"
 @Component({
   selector: "app-edit-course",
   templateUrl: "./edit-course.component.html",
 })
 export class EditCourseComponent implements OnInit {
-  editForm: FormGroup
-  Professors: Professor[]
-  courseId: string
   constructor(
     private courseApi: CourseService,
     private professorApi: ProfessorService,
     private fb: FormBuilder,
-    private location: Location,
+    public location: LocationService,
     private actRoute: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
   ) {}
+
+  editForm: FormGroup
+  Professors: Professor[]
+  courseId: string
+
   ngOnInit() {
     this.updateCourseData()
     const id = this.actRoute.snapshot.paramMap.get("id")
@@ -59,14 +61,10 @@ export class EditCourseComponent implements OnInit {
       professor: [ "" ],
     })
   }
-  goBack() {
-    this.location.back()
-  }
-
   updateForm() {
     this.courseApi.UpdateCourse(this.editForm.value, this.courseId)
     this.toastr.success(
-      this.editForm.controls["name"].value + " updated successfully",
+      this.editForm.controls["name"].value + " modifié avec succès",
     )
     this.router.navigate([ "view-courses" ])
   }

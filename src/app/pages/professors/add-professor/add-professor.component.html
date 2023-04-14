@@ -1,7 +1,7 @@
 <app-main-layout>
   <div class="pb-2 mb-3 border-b flex justify-between">
     <h2 class="text-3xl font-bold">Ajouter un professeur</h2>
-    <button class="form-button" (click)="goBack()">
+    <button class="form-button" (click)="location.goBack()">
       Retour
     </button>
   </div>
@@ -13,6 +13,7 @@
             <label for="firstName" class="block">Prénom</label>
             <input
               type="text"
+              id="firstName"
               formControlName="firstName"
               class="form-input"
               required
@@ -28,6 +29,7 @@
           <div class="w-full form-group">
             <label for="lastName" class="block">Nom</label>
             <input
+              id="lastName"
               type="text"
               formControlName="lastName"
               class="form-input"
@@ -44,6 +46,7 @@
           <div class="w-full form-group">
             <label for="email" class="block">Email</label>
             <input
+              id="email"
               type="email"
               formControlName="email"
               class="form-input"
@@ -60,6 +63,7 @@
           <div class="w-full form-group">
             <label for="mobileNumber" class="block">Téléphone</label>
             <input
+              id="mobileNumber"
               type="text"
               formControlName="mobileNumber"
               class="form-input"

@@ -27,3 +27,11 @@ export interface CourseEvent {
   startDate: string,
   endDate: string,
 }
+
+export interface User {
+  uid: string,
+  email: string,
+  displayName: string,
+  photoURL: string,
+  emailVerified: boolean,
+}

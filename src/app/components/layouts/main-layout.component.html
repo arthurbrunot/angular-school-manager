@@ -1,9 +1,8 @@
-<!-- Main component -->
 <div class="main-container h-screen flex flex-col">
-  <!-- Top navigation -->
   <nav class="w-full flex justify-between items-center bg-gray-800 text-white py-3 px-6">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/view-students">
-      <span class="dasboard-text">Tableau de bord</span>
+    <a class="flex items-center gap-2" routerLink="/view-students">
+      <img src="assets/images/logo.png" width="30" height="30" alt="">
+      <span>School manager</span>
     </a>
     <ul class="navbar-nav px-3" >
       <li class="nav-item text-nowrap" *ngIf="authService.userData as user">
@@ -13,7 +12,6 @@
       </li>
     </ul>
   </nav>
-  <!-- Sidebar navigation -->
   <div class="flex flex-wrap relative flex-1">
     <nav class="w-full md:w-2/12 bg-gray-100 h-full p-5">
       <div class="sidebar-sticky h-full">
@@ -45,8 +43,6 @@
         </ul>
       </div>
     </nav>
-
-    <!-- Main content -->
     <main role="main" class="w-full md:w-10/12 p-10">
       <div class="inner-adjust h-full">
         <ng-content></ng-content>

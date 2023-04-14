@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
+import { Component, Input, OnInit } from "@angular/core"
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap"
 import { Course, CourseEvent } from "../../../shared/services/crud/types"
 import { CourseService } from "../../../shared/services/crud/course.service"
@@ -11,12 +11,6 @@ import { ToastrService } from "ngx-toastr"
   templateUrl: "./event-modal.component.html",
 })
 export class EventCreateModalComponent implements OnInit {
-  @Input() startDate: string
-  @Input() endDate: string
-  courses: Course[]
-  isDisabled = true
-  public courseForm: FormGroup
-
   constructor(
     public activeModal: NgbActiveModal,
     private courseApi: CourseService,
@@ -24,6 +18,12 @@ export class EventCreateModalComponent implements OnInit {
     public toastr: ToastrService,
     private courseEventApi: CourseEventService,
   ) {}
+
+  @Input() startDate: string
+  @Input() endDate: string
+  courses: Course[]
+  isDisabled = true
+  public courseForm: FormGroup
 
   useCourseForm() {
     this.courseForm = this.fb.group({
@@ -51,11 +51,7 @@ export class EventCreateModalComponent implements OnInit {
   onChanges(): void {
     this.courseForm.valueChanges.subscribe((val) => {
       console.log(val)
-      if (this.courses.some((obj) => obj["$key"] === val.course)) {
-        this.isDisabled = false
-      } else {
-        this.isDisabled = true
-      }
+      this.isDisabled = !this.courses.some((obj) => obj["$key"] === val.course)
     })
   }
 
@@ -71,8 +67,8 @@ export class EventCreateModalComponent implements OnInit {
     const event: Omit<CourseEvent, "$key"> = {
       courseId: this.courseForm.value.course,
       courseName: this.getCourseName(this.courseForm.value.course).name,
-      startDate: this.startDate,
       endDate: this.endDate,
+      startDate: this.startDate,
     }
     this.courseEventApi.AddCourseEvent(event)
     this.toastr.success("Cours planifié avec succès")

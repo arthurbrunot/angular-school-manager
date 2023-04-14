@@ -14,7 +14,9 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
+      "plugins": ["sort-keys-fix"],
       "rules": {
+        "sort-keys-fix/sort-keys-fix": "warn",
         "@angular-eslint/directive-selector": [
           "error",
           {

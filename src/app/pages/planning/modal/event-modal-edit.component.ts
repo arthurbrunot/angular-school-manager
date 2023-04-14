@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
+import { Component, Input, OnInit } from "@angular/core"
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap"
 import { Course, CourseEvent } from "../../../shared/services/crud/types"
 import { CourseService } from "../../../shared/services/crud/course.service"
@@ -12,10 +12,6 @@ import * as moment from "moment"
   templateUrl: "./event-modal-edit.component.html",
 })
 export class EventEditModalComponent implements OnInit {
-  @Input() courseEvent: CourseEvent
-  courses: Course[]
-  public courseForm: FormGroup
-
   constructor(
     public activeModal: NgbActiveModal,
     private courseApi: CourseService,
@@ -24,6 +20,10 @@ export class EventEditModalComponent implements OnInit {
     private courseEventApi: CourseEventService,
   ) {}
 
+  @Input() courseEvent: CourseEvent
+  courses: Course[]
+  public courseForm: FormGroup
+
   useCourseForm() {
     this.courseForm = this.fb.group({
       course: [ "", [ Validators.required ] ],
@@ -31,7 +31,6 @@ export class EventEditModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.courseEvent)
     this.useCourseForm()
     this.courseEvent.startDate = moment(this.courseEvent.startDate).format("YYYY-MM-DD HH:mm:ss")
     this.courseEvent.endDate = moment(this.courseEvent.endDate).format("YYYY-MM-DD HH:mm:ss")
@@ -60,8 +59,8 @@ export class EventEditModalComponent implements OnInit {
     const event: Omit<CourseEvent, "$key"> = {
       courseId: this.courseForm.value.course,
       courseName: this.getCourseName(this.courseForm.value.course || this.courseEvent.courseId).name,
-      startDate: this.courseEvent.startDate,
       endDate: this.courseEvent.endDate,
+      startDate: this.courseEvent.startDate,
     }
 
     this.courseEventApi.UpdateCourseEvent(event, this.courseEvent.$key)

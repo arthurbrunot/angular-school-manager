@@ -2,24 +2,25 @@ import { Component, OnInit } from "@angular/core"
 import { CourseService } from "../../../shared/services/crud/course.service"
 import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { ToastrService } from "ngx-toastr"
-import { Location } from "@angular/common"
 import { ProfessorService } from "../../../shared/services/crud/professor.service"
 import { Professor } from "../../../shared/services/crud/types"
+import { LocationService } from "../../../shared/services/navigation/location.service"
 @Component({
   selector: "app-add-course",
   templateUrl: "./add-course.component.html",
 })
 export class AddCourseComponent implements OnInit {
-  public courseForm: FormGroup
-  Professors: Professor[]
-
   constructor(
     public courseApi: CourseService,
     public professorApi: ProfessorService,
     public fb: FormBuilder,
     public toastr: ToastrService,
-    private location: Location,
+    public location: LocationService,
   ) {}
+
+  public courseForm: FormGroup
+  Professors: Professor[]
+
   ngOnInit() {
     this.courseApi.GetCoursesList()
     this.useCourseForm()
@@ -51,10 +52,6 @@ export class AddCourseComponent implements OnInit {
 
   ResetForm() {
     this.courseForm.reset()
-  }
-
-  goBack() {
-    this.location.back()
   }
 
   submitCourseData() {

@@ -29,12 +29,13 @@ import { AddCourseComponent } from "./pages/courses/add-course/add-course.compon
 import { EditCourseComponent } from "./pages/courses/edit-course/edit-course.component"
 import { FullCalendarModule } from "@fullcalendar/angular"
 import { PlanningComponent } from "./pages/planning/planning.component"
-import { NgbModal, NgbModalModule } from "@ng-bootstrap/ng-bootstrap"
+import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap"
 import { EventCreateModalComponent } from "./pages/planning/modal/event-modal.component"
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome"
 import { CourseListComponent } from "./pages/courses/courses-list/course-list.component"
 import { EventEditModalComponent } from "./pages/planning/modal/event-modal-edit.component"
 @NgModule({
+  bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
     AddStudentComponent,
@@ -74,6 +75,5 @@ import { EventEditModalComponent } from "./pages/planning/modal/event-modal-edit
     FontAwesomeModule,
   ],
   providers: [ AuthService ],
-  bootstrap: [ AppComponent ],
 })
 export class AppModule {}

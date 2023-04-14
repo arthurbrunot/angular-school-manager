@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from "@angular/core"
-import { CalendarOptions } from "@fullcalendar/core"
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core"
+import { CalendarOptions, EventInput } from "@fullcalendar/core"
 import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction"
 import { FullCalendarComponent } from "@fullcalendar/angular"
@@ -17,42 +17,42 @@ import { EventEditModalComponent } from "./modal/event-modal-edit.component"
   templateUrl: "./planning.component.html",
 })
 export class PlanningComponent implements OnInit {
+  constructor(
+    private modalService: NgbModal,
+    private courseEventService: CourseEventService,
+    private courseService: CourseService,
+  ) {}
+
   @ViewChild("calendar") calendarContainer: ElementRef
   @ViewChild(FullCalendarComponent) fullCalendar: FullCalendarComponent
   CourseEvents: CourseEvent[]
   Courses: Course[]
   startDate: string
   endDate: string
-  calendarEvents: any[] = []
+  calendarEvents: EventInput[] = []
 
   calendarOptions: CalendarOptions = {
-    initialView: "timeGridWeek",
-    height: "auto",
-    hiddenDays: [ 0 ],
-    select: this.handleCalendarSelect.bind(this),
-    eventClick: this.handleEventClick.bind(this),
-    locale: frLocale,
     allDaySlot: false,
-    selectable: true,
-    slotDuration: "00:30:00",
-    slotMinTime: "06:00:00",
-    slotMaxTime: "21:00:00",
-    selectConstraint: "businessHours",
     businessHours: {
       // all days from 8am to 7pm
       daysOfWeek: [ 1, 2, 3, 4, 5, 6 ],
-      startTime: "08:00",
       endTime: "19:00",
+      startTime: "08:00",
     },
+    eventClick: this.handleEventClick.bind(this),
+    events: [],
+    height: "auto",
+    hiddenDays: [ 0 ],
+    initialView: "timeGridWeek",
+    locale: frLocale,
     plugins: [ timeGridPlugin, interactionPlugin ],
-    events: [], // Initialize events as an empty array
+    select: this.handleCalendarSelect.bind(this),
+    selectConstraint: "businessHours",
+    selectable: true,
+    slotDuration: "00:30:00",
+    slotMaxTime: "21:00:00",
+    slotMinTime: "06:00:00", // Initialize events as an empty array
   }
-
-  constructor(
-    private modalService: NgbModal,
-    private courseEventService: CourseEventService,
-    private courseService: CourseService,
-  ) {}
 
   handleEventClick(info: any) {
     const event = info.event // Get the clicked event object
@@ -61,8 +61,8 @@ export class PlanningComponent implements OnInit {
       $key: event.extendedProps.id,
       courseId: event.extendedProps.courseId,
       courseName: event.title,
-      startDate: event.start,
       endDate: event.end,
+      startDate: event.start,
     }
 
     const modalRef = this.modalService.open(EventEditModalComponent)
@@ -117,17 +117,17 @@ export class PlanningComponent implements OnInit {
     this.calendarOptions.events = this.calendarEvents
   }
 
-  courseEventToCalendarEvent(courseEvent: CourseEvent): any {
+  courseEventToCalendarEvent(courseEvent: CourseEvent): EventInput {
     return {
-      title: courseEvent.courseName,
-      start: courseEvent.startDate,
-      end: courseEvent.endDate,
       color: "#3482F6",
-      textColor: "#ffffff",
+      end: courseEvent.endDate,
       extendedProps: {
-        id: courseEvent.$key,
         courseId: courseEvent.courseId,
+        id: courseEvent.$key,
       },
+      start: courseEvent.startDate,
+      textColor: "#ffffff",
+      title: courseEvent.courseName,
     }
   }
 }
