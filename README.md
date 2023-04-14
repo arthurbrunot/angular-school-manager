@@ -1,27 +1,70 @@
-# FirstApp
+# School Manager Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+This is a school manager application built with Angular 15. It includes features such as a dashboard, students management, courses management, professors management, and planning.
 
-## Development server
+## Student informations
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Name: Arthur BRUNOT
+- Class: M2 IW
+- Skills on Angular : First time, never used it
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To run this application locally, follow the steps below:
+
+### Prerequisites
+
+You need to have the following software installed on your system:
+
+- Node.js (v16 or higher, 18 recommenced)
+- npm (v7 or higher, v9 recommended)
+
+### Installation
+
+1. Clone the repository to your local machine.
+2. Navigate to the root directory of the project in your terminal.
+3. Run `pnpm install` to install the dependencies. You can use another package manager like npm and yarn.
+
+### Development Server
+
+Run `ng serve` for a dev server. Navigate to http://localhost:4200/ in your web browser to access the application.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` to build the application. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This school manager application includes the following features:
 
-## Running end-to-end tests
+- Dashboard: Provides an overview of important information related to the school, such as student count, course count, professor count, and upcoming events from the planning.
+- Students Management: Allows users to view, add, edit, and delete students.
+- Courses Management: Allows users to view, add, edit, and delete courses.
+- Professors Management: Allows users to view, add, edit, and delete professors.
+- Planning: Displays a calendar view of upcoming courses.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Technologies Used
 
-## Further help
+This application is built using the following technologies:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular 15: A popular JavaScript framework for building web applications.
+- TypeScript: A superset of JavaScript that provides optional static typing and other features for building scalable applications.
+- Firebase: A cloud-based backend-as-a-service (BaaS) platform for building serverless applications.
+- ESLint: A widely used tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+- FullCalendar: A popular JavaScript library for displaying and managing calendars in web applications.
+- Tailwind CSS: A utility-first CSS framework for building modern and responsive user interfaces.
+- ngx-pagination: A pagination library for Angular applications.
+- ngx-toastr: A notifications library for Angular applications.
+
+## Contributing
+
+If you would like to contribute to this project, feel free to open an issue or submit a pull request. Contributions are always welcome!
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more information.
+
+## Contact
+
+If you have any questions or feedback, please feel free to contact the project owner.
+
