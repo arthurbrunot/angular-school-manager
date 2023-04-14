@@ -1,0 +1,97 @@
+<app-main-layout>
+  <div class="pb-2 mb-3 border-b flex justify-between">
+    <h2 class="text-3xl font-bold">Ajouter un professeur</h2>
+    <button class="form-button" (click)="goBack()">
+      Retour
+    </button>
+  </div>
+  <form [formGroup]="professorForm" (ngSubmit)="submitProfessorData()" novalidate class="space-y-4">
+    <div class="flex flex-wrap w-full">
+      <div class="w-full">
+        <div class="flex flex-wrap">
+          <div class="w-full form-group">
+            <label for="firstName" class="block">Prénom</label>
+            <input
+              type="text"
+              formControlName="firstName"
+              class="form-input"
+              required
+            />
+            <!-- errors-->
+            <p *ngIf="firstName?.touched && firstName?.invalid" class="form-error">
+              <sup>*</sup>Entrez un prénom valide
+            </p>
+            <p *ngIf="firstName?.errors?.['minlength']" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+          </div>
+          <div class="w-full form-group">
+            <label for="lastName" class="block">Nom</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              class="form-input"
+            />
+            <p *ngIf="lastName?.touched && lastName?.invalid" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+            <p *ngIf="lastName?.errors?.['minlength']" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-full form-group">
+            <label for="email" class="block">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              class="form-input"
+              required
+            />
+            <!-- errors-->
+            <p *ngIf="email?.touched && email?.invalid" class="form-error">
+              <sup>*</sup>Entrez un email
+            </p>
+            <p *ngIf="email?.errors?.['pattern']" class="form-error">
+              <sup>*</sup>Entrez un email valide
+            </p>
+          </div>
+          <div class="w-full form-group">
+            <label for="mobileNumber" class="block">Téléphone</label>
+            <input
+              type="text"
+              formControlName="mobileNumber"
+              class="form-input"
+              required
+            />
+            <!-- errors-->
+            <p *ngIf="mobileNumber?.touched && mobileNumber?.invalid" class="form-error">
+              <sup>*</sup>Entrez un numéro de téléphone
+            </p>
+            <p *ngIf="mobileNumber?.errors?.['pattern']" class="form-error">
+              <sup>*</sup>Entrez un numéro de téléphone valide
+            </p>
+          </div>
+        </div>
+        <div class="flex justify-end gap-4">
+          <button
+            type="button"
+            class="form-button-secondary"
+            (click)="ResetForm()"
+          >
+            Réinitialiser
+          </button>
+          <button
+            type="submit"
+            class="form-button"
+            [disabled]="!professorForm.valid"
+          >
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-main-layout>
+

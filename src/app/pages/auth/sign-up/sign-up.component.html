@@ -1,0 +1,52 @@
+<div class="flex justify-center items-center h-screen bg-gradient-to-r from-blue-300 to-blue-900">
+  <div class="w-full max-w-md">
+    <div class="bg-white shadow-md rounded p-8">
+      <h3 class="text-2xl font-bold mb-4">Inscription</h3>
+      <div class="mb-4">
+        <input
+          type="email"
+          class="form-input"
+          placeholder="Adresse e-mail"
+          #userEmail
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="password"
+          class="form-input"
+          #userPwd
+          placeholder="Mot de passe"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="button"
+          class="form-button w-full"
+          (click)="authService.SignUp(userEmail.value, userPwd.value)"
+          value="S'inscrire"
+        >
+      </div>
+      <div class="flex items-center mb-4">
+        <span class="flex-grow border-t border-gray-400"></span>
+        <span class="px-4 text-gray-600">Ou</span>
+        <span class="flex-grow border-t border-gray-400"></span>
+      </div>
+      <!-- Calling GoogleAuth Api from AuthService -->
+      <div class="mb-4 w-full">
+        <button
+          type="button"
+          class="form-button-secondary w-full"
+          (click)="authService.GoogleAuth()"
+        >
+          Continuer avec Google
+        </button>
+      </div>
+    </div>
+    <div class="mt-4 text-center">
+      <span class="text-white">Vous n'avez pas de compte ?</span>
+      <a href="/sign-in" class="text-white font-bold ml-2">Se connecter</a>
+    </div>
+  </div>
+</div>

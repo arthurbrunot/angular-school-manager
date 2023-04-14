@@ -1,0 +1,40 @@
+<div class="fixed bg-opacity-10 bg-gray-800 flex flex-col items-center justify-center z-50 w-full h-full">
+  <div class="max-w-xl min-w-[400px] bg-white rounded p-6">
+    <div class="flex flex-row justify-between mb-5">
+      <h4 class="text-3xl">Ajouter un cours</h4>
+      <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+        <span aria-hidden="true" class="text-2xl">&times;</span>
+      </button>
+    </div>
+    <div>
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" novalidate >
+        <div class="form-group">
+          <label>Date de début</label>
+          <input type="text" class="form-input" disabled [value]="startDate" required>
+        </div>
+        <div class="form-group">
+          <label>Date de fin</label>
+          <input type="text" class="form-input" disabled [value]="endDate" required>
+        </div>
+        <div class="form-group">
+          <label class="block">Matière</label>
+          <select
+            formControlName="course"
+            class="form-input"
+            required
+          >
+            <option value="" disabled selected>Choisir une matière</option>
+            <option *ngFor="let course of courses" [value]="course.$key">
+              {{ course.name }}
+            </option>
+          </select>
+        </div>
+        <!-- Add more form fields for capturing event details here -->
+        <div class="gap-4 flex">
+          <button type="button" class="form-button-secondary"  (click)="dismiss()">Annuler</button>
+          <button type="submit" class="form-button" [disabled]="isDisabled">Valider</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

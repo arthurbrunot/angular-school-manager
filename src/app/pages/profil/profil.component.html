@@ -1,0 +1,33 @@
+<app-main-layout>
+  <div class="pb-2 mb-3 border-b flex justify-between">
+    <h2 class="text-3xl font-bold">Mon profil</h2>
+    <a
+      class="button-destructive"
+      (click)="authService.SignOut()"
+    >
+      Deconnexion
+    </a>
+  </div>
+  <div class="flex flex-wrap w-full">
+    <div class="w-full" *ngIf="authService.userData as user">
+      <div class="flex flex-wrap">
+        <ul>
+          <li>
+            <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+          </li>
+          <li>
+            <p>User ID: <strong>{{user.uid}}</strong></p>
+          </li>
+          <li>
+            <p>Email: <strong>{{user.email}}</strong></p>
+          </li>
+          <li>
+            <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</app-main-layout>
+

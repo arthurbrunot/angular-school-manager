@@ -1,0 +1,56 @@
+<!-- Main component -->
+<div class="main-container h-screen flex flex-col">
+  <!-- Top navigation -->
+  <nav class="w-full flex justify-between items-center bg-gray-800 text-white py-3 px-6">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/view-students">
+      <span class="dasboard-text">Tableau de bord</span>
+    </a>
+    <ul class="navbar-nav px-3" >
+      <li class="nav-item text-nowrap" *ngIf="authService.userData as user">
+        <a class="" routerLink="/profil">
+          {{user.displayName || "Mon profil"}}
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Sidebar navigation -->
+  <div class="flex flex-wrap relative flex-1">
+    <nav class="w-full md:w-2/12 bg-gray-100 h-full p-5">
+      <div class="sidebar-sticky h-full">
+        <ul class="nav flex-col h-full">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/view-students" routerLinkActive="active">
+              <fa-icon [icon]="faUsers"></fa-icon>
+              Etudiants
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/view-professors" routerLinkActive="active">
+              <fa-icon [icon]="faUserTie"></fa-icon>
+              Professeurs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/view-courses" routerLinkActive="active">
+              <fa-icon [icon]="faNewspaper"></fa-icon>
+              Matières
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/planning" routerLinkActive="active">
+              <fa-icon [icon]="faCalendarDays"></fa-icon>
+              Planning
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main role="main" class="w-full md:w-10/12 p-10">
+      <div class="inner-adjust h-full">
+        <ng-content></ng-content>
+      </div>
+    </main>
+  </div>
+</div>

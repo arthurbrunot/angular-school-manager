@@ -1,0 +1,72 @@
+<app-main-layout>
+<div class="pb-2 mb-3 border-b flex justify-between">
+  <h2 class="text-3xl font-bold">Liste des étudiants</h2>
+  <a
+    routerLink="/register-student"
+    class="form-button"
+    *ngIf="hideWhenNoStudent"
+  >
+    Ajouter un étudiant
+  </a>
+</div>
+<div class="mx-auto">
+  <div class="text-center" *ngIf="preLoader">
+    <p class="mt-5">Chargement....</p>
+  </div>
+  <div class="text-center" *ngIf="noData">
+    <p class="mt-5 text-red-500 font-semibold mb-5">Aucun étudiant pour le moment</p>
+    <a
+      routerLink="/register-student"
+      class="form-button"
+    >
+      Ajouter un étudiant
+    </a>
+  </div>
+  <div class="overflow-x-auto" *ngIf="hideWhenNoStudent">
+    <table class="w-full border-collapse table-fixed">
+      <thead>
+      <tr class="bg-gray-100">
+        <th scope="col" class="px-4 py-3 text-left font-bold">ID</th>
+        <th scope="col" class="px-4 py-3 text-left font-bold">identité de l'étudiant</th>
+        <th scope="col" class="px-4 py-3 text-left font-bold">Email</th>
+        <th scope="col" class="px-4 py-3 text-left font-bold">Téléphone</th>
+        <th scope="col" class="px-4 py-3 text-right font-bold">Actions</th>
+      </tr>
+      </thead>
+      <tbody class="bg-gray-50">
+      <tr
+        *ngFor="let student of Student | paginate: { itemsPerPage: 8, currentPage: p }; let i = index"
+        class="border-t border-gray-200"
+      >
+        <td class="py-3 px-4">{{ student.$key }}</td>
+        <td class="py-3 px-4">{{ student.firstName }} {{ student.lastName }}</td>
+        <td class="py-3 px-4">{{ student.email }}</td>
+        <td class="py-3 px-4">{{ student.mobileNumber }}</td>
+        <td class="py-3 px-4 text-right">
+            <button
+              class="mr-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition duration-300 cursor-pointer"
+              routerLink="/edit-student/{{ student.$key }}"
+            >
+              Editer
+            </button>
+          <button
+            class="px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600 transition duration-300 cursor-pointer"
+            (click)="deleteStudent(student)"
+          >
+              Supprimer
+            </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-5">
+    <pagination-controls
+      nextLabel="Suivant"
+      previousLabel="Précédent"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+
+</div>
+</app-main-layout>

@@ -1,0 +1,62 @@
+<app-main-layout>
+  <div class="pb-2 mb-3 border-b flex justify-between">
+    <h2 class="text-3xl font-bold">Ajouter une matière</h2>
+    <button class="form-button" (click)="goBack()">
+      Retour
+    </button>
+  </div>
+  <form [formGroup]="courseForm" (ngSubmit)="submitCourseData()" novalidate class="space-y-4">
+    <div class="flex flex-wrap w-full">
+      <div class="w-full">
+        <div class="flex flex-wrap">
+          <div class="w-full form-group">
+            <label for="name" class="block">Nom du cours</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-input"
+              required
+            />
+            <!-- errors-->
+            <p *ngIf="name?.touched && name?.invalid" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+            <p *ngIf="name?.errors?.['minlength']" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+          </div>
+          <div class="w-full form-group">
+            <label for="lastName" class="block">Professeur</label>
+            <select
+              formControlName="professor"
+              class="form-input"
+              required
+            >
+              <option value="" disabled selected>Choisir un professeur</option>
+              <option *ngFor="let professor of Professors" [value]="professor.$key">
+                {{ professor.lastName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="flex justify-end gap-4">
+          <button
+            type="button"
+            class="form-button-secondary"
+            (click)="ResetForm()"
+          >
+            Réinitialiser
+          </button>
+          <button
+            type="submit"
+            class="form-button"
+            [disabled]="!courseForm.valid"
+          >
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-main-layout>
+

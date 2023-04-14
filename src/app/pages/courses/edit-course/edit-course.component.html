@@ -1,0 +1,58 @@
+<app-main-layout>
+  <div class="pb-2 mb-3 border-b flex justify-between">
+    <h2 class="text-3xl font-bold">Editer une matière</h2>
+    <button class="form-button" (click)="goBack()">
+      Retour
+    </button>
+  </div>
+  <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate class="space-y-4">
+    <div class="flex flex-wrap w-full">
+      <div class="w-full">
+        <div class="flex flex-wrap">
+          <div class="w-full form-group">
+            <label for="name" class="block">Nom du cours</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-input"
+              id="name"
+              required
+            />
+            <!-- errors-->
+            <p *ngIf="name?.touched && name?.invalid" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+            <p *ngIf="name?.errors?.['minlength']" class="form-error">
+              <sup>*</sup>Entrez un nom valide
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-full form-group">
+            <label for="professor" class="block">Professeur</label>
+            <select
+              formControlName="professor"
+              class="form-input"
+              id="professor"
+              required
+            >
+              <option value="" disabled selected>Choisir un professeur</option>
+              <option *ngFor="let professor of Professors" [value]="professor.$key">
+                {{ professor.lastName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button
+            type="submit"
+            class="form-button"
+            [disabled]="!editForm.valid"
+          >
+            Mettre à jour
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-main-layout>
