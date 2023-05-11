@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { CourseService } from "../../../shared/services/crud/course.service"
-import { Course, Professor } from "../../../shared/services/crud/types"
+import { Course, Professor } from "../../../shared/types/types"
 import { ToastrService } from "ngx-toastr"
 import { ProfessorService } from "../../../shared/services/crud/professor.service"
 

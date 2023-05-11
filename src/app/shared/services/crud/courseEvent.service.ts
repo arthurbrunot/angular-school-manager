@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { CourseEvent } from "./types"
+import { CourseEvent } from "../../types/types"
 import {
   AngularFireDatabase,
   AngularFireList,

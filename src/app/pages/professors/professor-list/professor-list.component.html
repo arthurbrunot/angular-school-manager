@@ -41,7 +41,7 @@
         <td class="py-3 px-4">{{ professor.$key }}</td>
         <td class="py-3 px-4">{{ professor.firstName }} {{ professor.lastName }}</td>
         <td class="py-3 px-4">{{ professor.email }}</td>
-        <td class="py-3 px-4">{{ professor.mobileNumber }}</td>
+        <td class="py-3 px-4">{{ professor.mobileNumber | phoneNumberFormat }}</td>
         <td class="py-3 px-4 text-right">
             <button
               class="mr-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition duration-300 cursor-pointer"

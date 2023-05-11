@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { ProfessorService } from "../../../shared/services/crud/professor.service"
-import { Student } from "../../../shared/services/crud/types"
+import { Professor, Student } from "../../../shared/types/types"
 import { ToastrService } from "ngx-toastr"
 
 @Component({
@@ -14,7 +14,7 @@ export class ProfessorListComponent implements OnInit {
   ) { }
 
   p: number = 1
-  Professor: Student[]
+  Professor: Professor[]
   hideWhenNoProfessor: boolean = false
   noData: boolean = false
   preLoader: boolean = true

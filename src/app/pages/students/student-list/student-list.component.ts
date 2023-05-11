@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { StudentService } from "../../../shared/services/crud/student.service"
-import { Student } from "../../../shared/services/crud/types"
+import { Student } from "../../../shared/types/types"
 import { ToastrService } from "ngx-toastr"
 
 @Component({

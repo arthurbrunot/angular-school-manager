@@ -3,7 +3,7 @@ export interface Student {
   firstName: string,
   lastName: string,
   email: string,
-  mobileNumber: number,
+  mobileNumber: string,
 }
 
 export interface Professor {
@@ -11,7 +11,7 @@ export interface Professor {
   firstName: string,
   lastName: string,
   email: string,
-  mobileNumber: number,
+  mobileNumber: string,
 }
 
 export interface Course {

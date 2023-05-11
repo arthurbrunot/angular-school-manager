@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { Course } from "./types"
+import { Course } from "../../types/types"
 import {
   AngularFireDatabase,
   AngularFireList,

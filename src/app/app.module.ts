@@ -34,6 +34,7 @@ import { EventCreateModalComponent } from "./pages/planning/modal/event-modal.co
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome"
 import { CourseListComponent } from "./pages/courses/courses-list/course-list.component"
 import { EventEditModalComponent } from "./pages/planning/modal/event-modal-edit.component"
+import { PhoneNumberFormatPipe } from "./phone-number-format.pipe"
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
@@ -56,6 +57,7 @@ import { EventEditModalComponent } from "./pages/planning/modal/event-modal-edit
     PlanningComponent,
     EventCreateModalComponent,
     EventEditModalComponent,
+    PhoneNumberFormatPipe,
   ],
   imports: [
     BrowserModule,

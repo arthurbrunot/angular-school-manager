@@ -49,6 +49,26 @@ This school manager application includes the following features:
 - Professors Management: Allows users to view, add, edit, and delete professors.
 - Planning: Displays a calendar view of upcoming courses.
 
+## Features
+
+- [x] Construire un simple CRUD (Create, Read, Update, Delete), utilisez les formulaires, les events du DOM...
+- [x] Utiliser le routeur Angular et des routes protégées (Guard)
+- [x] Utiliser l'injection de dépendances afin d'optimiser votre code
+- [x] Utiliser les pipes à bon escient et créer un pipe custom
+- [x] Utiliser un backend as a service, un fake backend
+- [x] Utiliser des formulaires 
+- [x] Mettre en place un systeme de login
+- [x] S'Appliquer avec le CSS!
+- [x] Eviter le code mort
+- [x] A l'aide du support fourni, mettre en place un type de test et expliquez son intérêt dans le contexte de votre application
+- [x] S'Assurer d'utiliser toutes les fonctionnalitées présentées en cours.
+
+
+- Les composants réutilisables se trouvent dans le dossier components. Comme on utilise tailwind pour les boutons et autres éléments standards, on a uniquement un composant de layout.
+- Les services se trouvent dans le dossier shares. On a un service pour chaque entité (student, course, professor, event) et un service pour l'authentification ( qui contient aussi le guard ).
+- Le dossier pages contient les composants qui sont utilisés dans les routes. On a un composant pour chaque page (dashboard, students, courses, professors, planning, login, register). Chaque dossier contient une fonctionnalités principale de l'application pour retrouver facilement.
+- Les types se trouvent dans le dossier shared/types.
+
 ## Technologies Used
 
 This application is built using the following technologies:

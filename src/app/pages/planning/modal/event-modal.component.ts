@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core"
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap"
-import { Course, CourseEvent } from "../../../shared/services/crud/types"
+import { Course, CourseEvent } from "../../../shared/types/types"
 import { CourseService } from "../../../shared/services/crud/course.service"
 import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { CourseEventService } from "../../../shared/services/crud/courseEvent.service"

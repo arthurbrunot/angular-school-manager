@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { Student } from "./types"
+import { Student } from "../../types/types"
 import {
   AngularFireDatabase,
   AngularFireList,
@@ -15,9 +15,9 @@ export class StudentService {
   // Create Types
   AddStudent(student: Student) {
     this.studentsRef.push({
+      email: student.email,
       firstName: student.firstName,
       lastName: student.lastName,
-      email: student.email,
       mobileNumber: student.mobileNumber,
     })
   }
@@ -34,9 +34,9 @@ export class StudentService {
   // Update Types Object
   UpdateStudent(student: Student) {
     this.studentRef.update({
+      email: student.email,
       firstName: student.firstName,
       lastName: student.lastName,
-      email: student.email,
       mobileNumber: student.mobileNumber,
     })
   }

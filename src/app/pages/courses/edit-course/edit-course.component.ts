@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { CourseService } from "../../../shared/services/crud/course.service"
 import { ActivatedRoute, Router } from "@angular/router"
 import { ToastrService } from "ngx-toastr"
-import { Professor } from "../../../shared/services/crud/types"
+import { Professor } from "../../../shared/types/types"
 import { ProfessorService } from "../../../shared/services/crud/professor.service"
 import { LocationService } from "../../../shared/services/navigation/location.service"
 @Component({
